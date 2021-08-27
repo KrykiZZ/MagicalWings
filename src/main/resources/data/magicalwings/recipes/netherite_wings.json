@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FDF",
+    "SNS",
+    "F F"
+  ],
+  "key": {
+    "F": {
+      "item": "magicalwings:floating_feather"
+    },
+    "D": {
+      "item": "magicalwings:fairy_dust"
+    },
+    "S": {
+      "item": "magicalwings:netherite_sheating"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "magicalwings:netherite_wings",
+    "count": 1
+  }
+}

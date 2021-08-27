@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:ender_pearl"
+  },
+  "result": {
+    "item": "magicalwings:ender_dust"
+  },
+  "experience": 0
+}

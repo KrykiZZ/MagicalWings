@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "magicalwings:fairy_dust"
+    }
+  ],
+  "result": {
+    "item": "magicalwings:floating_feather"
+  }
+}

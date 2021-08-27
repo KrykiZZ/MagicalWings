@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BGB",
+    "RER",
+    "BGB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "G": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "E": {
+      "item": "magicalwings:ender_dust"
+    }
+  },
+  "result": {
+    "item": "magicalwings:fairy_dust",
+    "count": 5
+  }
+}

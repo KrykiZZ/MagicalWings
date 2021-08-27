@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "SCS",
+    "LLL"
+  ],
+  "key": {
+    "L": {
+      "item": "magicalwings:floating_leather"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "C": {
+      "item": "minecraft:golden_chestplate"
+    }
+  },
+  "result": {
+    "item": "magicalwings:gold_sheating",
+    "count": 2
+  }
+}

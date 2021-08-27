@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "SCS",
+    "LLL"
+  ],
+  "key": {
+    "L": {
+      "item": "magicalwings:floating_leather"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "C": {
+      "item": "minecraft:netherite_chestplate"
+    }
+  },
+  "result": {
+    "item": "magicalwings:netherite_sheating",
+    "count": 2
+  }
+}
