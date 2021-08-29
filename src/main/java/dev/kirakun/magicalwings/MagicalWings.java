@@ -1,9 +1,7 @@
 package dev.kirakun.magicalwings;
 
+import dev.kirakun.magicalwings.layers.WingsLayer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.model.PlayerModel;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
@@ -59,8 +57,8 @@ public class MagicalWings
 
     private void doClientStuff(final FMLClientSetupEvent event)
     {
-        /*Minecraft.getInstance().
-        ((RenderPlayer)Minecraft.getMinecraft().getRenderManager().skinMap.get("default")).addLayer(layer);
-        ((RenderPlayer)Minecraft.getMinecraft().getRenderManager().skinMap.get("slim")).addLayer(layer);*/
+        Minecraft.getInstance().getEntityRenderDispatcher().getSkinMap().forEach((string, render) ->
+                render.addLayer(new WingsLayer<>(render))
+        );
     }
 }

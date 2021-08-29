@@ -14,7 +14,6 @@ public class EventsHandler
     public static Boolean LastIsCreative = false;
     public static Boolean IsFirstHandle = true;
 
-
     @SubscribeEvent
     public static void onClientTick(TickEvent.PlayerTickEvent event)
     {
