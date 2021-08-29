@@ -16,10 +16,11 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public class WingsLayer<T extends LivingEntity, M extends EntityModel<T>> extends LayerRenderer<T, M>
 {
-    private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation("textures/entity/elytra.png");
+    private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation("magicalwings", "textures/entity/elytra.png");
     private final ElytraModel<T> modelElytra = new ElytraModel<>();
 
     public WingsLayer (IEntityRenderer<T, M> renderer)

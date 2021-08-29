@@ -59,6 +59,8 @@ public class MagicalWings
 
     private void doClientStuff(final FMLClientSetupEvent event)
     {
-
+        /*Minecraft.getInstance().
+        ((RenderPlayer)Minecraft.getMinecraft().getRenderManager().skinMap.get("default")).addLayer(layer);
+        ((RenderPlayer)Minecraft.getMinecraft().getRenderManager().skinMap.get("slim")).addLayer(layer);*/
     }
 }
