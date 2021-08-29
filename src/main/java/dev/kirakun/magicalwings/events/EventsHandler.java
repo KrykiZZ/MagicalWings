@@ -1,5 +1,6 @@
-package dev.kirakun.magicalwings;
+package dev.kirakun.magicalwings.events;
 
+import dev.kirakun.magicalwings.Wings;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.TickEvent;
@@ -12,6 +13,7 @@ public class EventsHandler
     public static Item LastChestplate = null;
     public static Boolean LastIsCreative = false;
     public static Boolean IsFirstHandle = true;
+
 
     @SubscribeEvent
     public static void onClientTick(TickEvent.PlayerTickEvent event)
