@@ -17,10 +17,6 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.pipeline.VertexBufferConsumer;
-import org.lwjgl.opengl.GL11;
-
-import java.awt.*;
 
 public class WingsLayer<T extends LivingEntity, M extends EntityModel<T>> extends LayerRenderer<T, M>
 {
@@ -44,6 +40,9 @@ public class WingsLayer<T extends LivingEntity, M extends EntityModel<T>> extend
         Item item = itemstack.getItem();
         if (item instanceof Wings)
         {
+            if (entitylivingbaseIn.isInvisible())
+                return;
+
             ResourceLocation resourceLocation;
             switch (item.getRegistryName().getPath())
             {

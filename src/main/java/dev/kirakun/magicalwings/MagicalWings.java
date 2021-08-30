@@ -1,23 +1,39 @@
 package dev.kirakun.magicalwings;
 
 import dev.kirakun.magicalwings.layers.WingsLayer;
+import dev.kirakun.magicalwings.network.NetworkHandler;
+import dev.kirakun.magicalwings.network.serverbound.UpdateFlying;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.server.management.PlayerList;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.HashMap;
+
 @Mod("magicalwings")
 public class MagicalWings
 {
+    public static HashMap<String, PlayerWingsData> TotalWingsData = new HashMap<String, PlayerWingsData>();
+    public static HashMap<Integer, Boolean> FlyingPlayers = new HashMap<Integer, Boolean>();
+
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "magicalwings");
+    public static final NetworkHandler Network = new NetworkHandler();
 
     /*
     <-------- Any  Wings -------->
@@ -57,8 +73,31 @@ public class MagicalWings
 
     private void doClientStuff(final FMLClientSetupEvent event)
     {
+        Network.init();
         Minecraft.getInstance().getEntityRenderDispatcher().getSkinMap().forEach((string, render) ->
                 render.addLayer(new WingsLayer<>(render))
         );
+    }
+
+    @SubscribeEvent
+    public static void serverInit(FMLCommonSetupEvent event)
+    {
+        Network.init();
+    }
+
+    @SubscribeEvent
+    public void onEntityJoinWorld(EntityJoinWorldEvent event)
+    {
+        Entity entity = event.getEntity();
+        World world = event.getWorld();
+
+        if (entity instanceof PlayerEntity && !world.isClientSide)
+        {
+            for (int player : FlyingPlayers.keySet())
+                Network.sendToPlayer((ServerPlayerEntity)entity, new UpdateFlying(player, true));
+
+
+            Network.sendToAll(new UpdateFlying(entity.getId(), ((PlayerEntity)entity).abilities.flying));
+        }
     }
 }
